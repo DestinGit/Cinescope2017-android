@@ -47,7 +47,7 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
         tImages[4] = String.valueOf(R.drawable.newfilms);
         tImages[5] = String.valueOf(R.drawable.nouveauxfilms);
         tImages[6] = String.valueOf(R.drawable.reprises);
-        tImages[7] = String.valueOf(R.drawable.nouveauxfilms);
+        tImages[7] = String.valueOf(R.drawable.rechercher);
 
         // --- Creation de l'ArrayList pour remplir la ListView
         List<Map<String, String>> listMenu = new ArrayList();
