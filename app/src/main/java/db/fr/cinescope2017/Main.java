@@ -92,6 +92,12 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
             intention.setClass(this, HitParadeDuPublic.class);
             startActivityForResult(intention, 2);
         }
+
+        if (position==7){
+            intention.setClass(this, RechercheAvancee.class);
+            intention.putExtra("motRecherche","mon mot");
+            startActivityForResult(intention, 7);
+        }
     }
 
     // -------------------------
@@ -118,6 +124,19 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
                         return;
                     case RESULT_CANCELED:
                         Toast.makeText(this, "KO", Toast.LENGTH_SHORT).show();
+                        return;
+                }
+            case 7: // Hit Parade
+                Toast.makeText(this, Integer.toString(requestCode), Toast.LENGTH_SHORT).show();
+                switch (resultCode) {
+                    case RESULT_OK:
+                        // --- Recuperation des donnees recues
+                        String lsDataRetour = data.getStringExtra("result");
+                        Toast.makeText(this, lsDataRetour, Toast.LENGTH_SHORT).show();
+                        return;
+                    case RESULT_CANCELED:
+                        String lsDataRetour1 = data.getStringExtra("result");
+                        Toast.makeText(this, lsDataRetour1, Toast.LENGTH_SHORT).show();
                         return;
                 }
         } // / switch (requestCode)
