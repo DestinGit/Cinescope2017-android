@@ -28,14 +28,16 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
 
 //        String[] tMenu = {"Tous les films","Avant Première","Nouveaux Films","Reprises","Articles",
 //        "Festivals", "Box Office", "Hit Parade", "Avis des critiques", "Salles de Paris", "salles de périphérie"};
-        String[] tMenu = getResources().getStringArray(R.array.menus);
 
         myList = (ListView)findViewById(R.id.listView);
         textViewSelection = (TextView)findViewById(R.id.itemMainMenu);
         imagViewLogo = (ImageView)findViewById(R.id.imagViewLogo);
 
+        // Initialiser notre tableau de menu, en récupérant la liste dans arrays.xml
+        String[] tMenu = getResources().getStringArray(R.array.menus);
 
         // Recupere l'id de l'image ... en base decimale
+        // Transforme les images dans en string et le stocker dans le tableau String
         String[] tImages = new String[11];
         tImages[0] = String.valueOf(R.drawable.tousfilms);
         tImages[1] = String.valueOf(R.drawable.nouveauxfilms);
@@ -49,13 +51,17 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
         tImages[9] = String.valueOf(R.drawable.salleparis);
         tImages[10] = String.valueOf(R.drawable.salleperi);
 
+        // --- Creation de l'ArrayList pour remplir la ListView
         List<Map<String, String>> listMenu = new ArrayList();
+        // --- HashMap pour les informations pour un item
         Map<String, String> hm;
 
+        // --- Remplissage dynamique
         for(int i = 0; i < tMenu.length; i++) {
             hm = new HashMap();
             hm.put("image", tImages[i]);
             hm.put("itemMenu", tMenu[i]);
+            hm.put("help", "help aide");
             listMenu.add(hm);
         }
 
@@ -63,8 +69,8 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
                 this.getBaseContext(),
                 listMenu,
                 R.layout.ligne_main_menu,
-                new String[] { "image", "itemMenu"},
-                new int[] { R.id.imagViewLogo, R.id.itemMainMenu}
+                new String[] { "image", "itemMenu", "help"},
+                new int[] { R.id.imagViewLogo, R.id.itemMainMenu, R.id.textViewComment}
         );
 
         // Affectation directe du Simple Adapter a la ListView
