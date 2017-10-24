@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="menus">
+        <item>Tous les films</item>
+        <item>Avant Première</item>
+        <item>Nouveaux Films</item>
+        <item>Reprises</item>
+        <item>Articles</item>
+        <item>Festivals</item>
+        <item>Box Office</item>
+        <item>Hit Parade</item>
+        <item>Avis des critiques</item>
+        <item>Salles de Paris</item>
+        <item>salles de périphérie</item>
+    </string-array>
+</resources>

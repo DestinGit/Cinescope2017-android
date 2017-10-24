@@ -26,8 +26,9 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String[] tMenu = {"Tous les films","Avant Première","Nouveaux Films","Reprises","Articles",
-        "Festivals", "Box Office", "Hit Parade", "Avis des critiques", "Salles de Paris", "salles de périphérie"};
+//        String[] tMenu = {"Tous les films","Avant Première","Nouveaux Films","Reprises","Articles",
+//        "Festivals", "Box Office", "Hit Parade", "Avis des critiques", "Salles de Paris", "salles de périphérie"};
+        String[] tMenu = getResources().getStringArray(R.array.menus);
 
         myList = (ListView)findViewById(R.id.listView);
         textViewSelection = (TextView)findViewById(R.id.itemMainMenu);

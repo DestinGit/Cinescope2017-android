@@ -10,10 +10,13 @@
         android:src="@android:drawable/alert_dark_frame"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:text="Texte"
         android:id="@+id/itemMainMenu"
-        android:padding="3dip"/>
+        android:padding="3dip"
+        android:gravity="center"
+        android:textSize="19sp"
+        android:textStyle="bold|italic"/>
 
 </LinearLayout>
