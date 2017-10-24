@@ -26,7 +26,8 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String[] tMenu = {"Liste de films","Hpp","AVC","BO","RA"};
+        String[] tMenu = {"Tous les films","Avant Première","Nouveaux Films","Reprises","Articles",
+        "Festivals", "Box Office", "Hit Parade", "Avis des critiques", "Salles de Paris", "salles de périphérie"};
 
         myList = (ListView)findViewById(R.id.listView);
         textViewSelection = (TextView)findViewById(R.id.itemMainMenu);
@@ -34,12 +35,18 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
 
 
         // Recupere l'id de l'image ... en base decimale
-        String[] tImages = new String[5];
-        tImages[0] = String.valueOf(R.drawable.img1);
-        tImages[1] = String.valueOf(R.drawable.img2);
-        tImages[2] = String.valueOf(R.drawable.img3);
-        tImages[3] = String.valueOf(R.drawable.img4);
-        tImages[4] = String.valueOf(R.drawable.img5);
+        String[] tImages = new String[11];
+        tImages[0] = String.valueOf(R.drawable.tousfilms);
+        tImages[1] = String.valueOf(R.drawable.nouveauxfilms);
+        tImages[2] = String.valueOf(R.drawable.newfilms);
+        tImages[3] = String.valueOf(R.drawable.reprises);
+        tImages[4] = String.valueOf(R.drawable.articles);
+        tImages[5] = String.valueOf(R.drawable.festival);
+        tImages[6] = String.valueOf(R.drawable.festival2);
+        tImages[7] = String.valueOf(R.drawable.hitparade);
+        tImages[8] = String.valueOf(R.drawable.aviscritiques);
+        tImages[9] = String.valueOf(R.drawable.salleparis);
+        tImages[10] = String.valueOf(R.drawable.salleperi);
 
         List<Map<String, String>> listMenu = new ArrayList();
         Map<String, String> hm;
