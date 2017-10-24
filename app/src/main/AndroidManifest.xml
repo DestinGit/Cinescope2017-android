@@ -15,6 +15,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".HitParadeDuPublic" />
+        <activity android:name=".BoxOffice" />
+        <activity android:name=".AvisDesCritiques" />
+        <activity android:name=".RechercheAvancee" />
+        <activity android:name=".TousLesFilms" />
+        <activity android:name=".Nouveauxfilms" />
+        <activity android:name=".Reprises" />
+        <activity android:name=".Articles" />
+        <activity android:name=".Festivals"></activity>
     </application>
 
 </manifest>

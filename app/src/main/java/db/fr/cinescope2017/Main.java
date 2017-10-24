@@ -1,5 +1,6 @@
 package db.fr.cinescope2017;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -38,18 +39,15 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
 
         // Recupere l'id de l'image ... en base decimale
         // Transforme les images dans en string et le stocker dans le tableau String
-        String[] tImages = new String[11];
+        String[] tImages = new String[8];
         tImages[0] = String.valueOf(R.drawable.tousfilms);
-        tImages[1] = String.valueOf(R.drawable.nouveauxfilms);
-        tImages[2] = String.valueOf(R.drawable.newfilms);
-        tImages[3] = String.valueOf(R.drawable.reprises);
-        tImages[4] = String.valueOf(R.drawable.articles);
-        tImages[5] = String.valueOf(R.drawable.festival);
-        tImages[6] = String.valueOf(R.drawable.festival2);
-        tImages[7] = String.valueOf(R.drawable.hitparade);
-        tImages[8] = String.valueOf(R.drawable.aviscritiques);
-        tImages[9] = String.valueOf(R.drawable.salleparis);
-        tImages[10] = String.valueOf(R.drawable.salleperi);
+        tImages[1] = String.valueOf(R.drawable.festival2);
+        tImages[2] = String.valueOf(R.drawable.hitparade);
+        tImages[3] = String.valueOf(R.drawable.aviscritiques);
+        tImages[4] = String.valueOf(R.drawable.newfilms);
+        tImages[5] = String.valueOf(R.drawable.nouveauxfilms);
+        tImages[6] = String.valueOf(R.drawable.reprises);
+        tImages[7] = String.valueOf(R.drawable.nouveauxfilms);
 
         // --- Creation de l'ArrayList pour remplir la ListView
         List<Map<String, String>> listMenu = new ArrayList();
@@ -81,7 +79,48 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Map<String,String> map = (Map<String, String>) parent.getAdapter().getItem(position);
-        Toast.makeText(this, map.get("itemMenu"), Toast.LENGTH_SHORT).show();
+//        Map<String,String> map = (Map<String, String>) parent.getAdapter().getItem(position);
+//        Toast.makeText(this, map.get("itemMenu"), Toast.LENGTH_SHORT).show();
+
+        Intent intention = new Intent();
+
+        if (position==1) {
+            intention.setClass(this, BoxOffice.class);
+            startActivityForResult(intention, 1);
+        }
+        if (position==2) {
+            intention.setClass(this, HitParadeDuPublic.class);
+            startActivityForResult(intention, 2);
+        }
     }
+
+    // -------------------------
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case 1: // BO
+                Toast.makeText(this, Integer.toString(requestCode), Toast.LENGTH_SHORT).show();
+                switch (resultCode) {
+                    case RESULT_OK:
+                        // --- Recuperation des donnees recues
+                        Toast.makeText(this, "OK", Toast.LENGTH_SHORT).show();
+                        return;
+                    case RESULT_CANCELED:
+                        Toast.makeText(this, "KO", Toast.LENGTH_SHORT).show();
+                        return;
+                } // / switch (resultCode)
+
+            case 2: // Hit Parade
+                Toast.makeText(this, Integer.toString(requestCode), Toast.LENGTH_SHORT).show();
+                switch (resultCode) {
+                    case RESULT_OK:
+                        // --- Recuperation des donnees recues
+                        Toast.makeText(this, "OK", Toast.LENGTH_SHORT).show();
+                        return;
+                    case RESULT_CANCELED:
+                        Toast.makeText(this, "KO", Toast.LENGTH_SHORT).show();
+                        return;
+                }
+        } // / switch (requestCode)
+
+    } // / onActivityResult
 }
