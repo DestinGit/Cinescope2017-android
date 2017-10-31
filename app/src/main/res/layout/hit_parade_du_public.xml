@@ -8,6 +8,13 @@
         android:layout_height="wrap_content"
         android:text="HIT PARADE"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="HitParade du Public"
+        android:id="@+id/textViewContenu" />
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal" android:layout_width="match_parent"
         android:layout_height="match_parent" android:padding="5dp">
