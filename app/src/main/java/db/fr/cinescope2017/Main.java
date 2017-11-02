@@ -75,6 +75,8 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
         myList.setAdapter(sa);
 
         myList.setOnItemClickListener(this);
+
+//        onItemClick(myList, null, 2,2);
     }
 
     @Override

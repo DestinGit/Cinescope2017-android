@@ -7,7 +7,14 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
 
-import java.io.*;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -18,27 +25,27 @@ import db.fr.cinescope2017.R;
 /**
  * Created by formation on 31/10/2017.
  */
-public class TacheAsynchrone extends AsyncTask<String, Integer, String> {
+public class TacheAsynchroneBO extends AsyncTask<String, Integer, JSONArray> {
     private TextView textViewCSV;
     private Context that;
-    private GridView gridViewHPP,gridViewHPPTitle;
+    private GridView gridViewBoxOffice,gridViewBoxOfficeTitle;
 
-    public TacheAsynchrone() {
+    public TacheAsynchroneBO() {
     }
 
-    public TacheAsynchrone(TextView textViewCSV) {
+    public TacheAsynchroneBO(TextView textViewCSV) {
         this.textViewCSV = textViewCSV;
     }
 
-    public TacheAsynchrone(Context that, GridView gridViewHPP) {
+    public TacheAsynchroneBO(Context that, GridView gridViewBoxOffice) {
         this.that = that;
-        this.gridViewHPP = gridViewHPP;
+        this.gridViewBoxOffice = gridViewBoxOffice;
     }
 
-    public TacheAsynchrone(Context that, GridView gridViewHPPTitle, GridView gridViewHPP) {
+    public TacheAsynchroneBO(Context that, GridView gridViewBoxOfficeTitle, GridView gridViewBoxOffice) {
         this.that = that;
-        this.gridViewHPP = gridViewHPP;
-        this.gridViewHPPTitle = gridViewHPPTitle;
+        this.gridViewBoxOffice = gridViewBoxOffice;
+        this.gridViewBoxOfficeTitle = gridViewBoxOfficeTitle;
     }
 
     public void setTextViewCSV(TextView textViewCSV) {
@@ -46,9 +53,10 @@ public class TacheAsynchrone extends AsyncTask<String, Integer, String> {
     }
     @Override
     // ----------------------------
-    protected String doInBackground(String... asParametres) {
+    protected JSONArray doInBackground(String... asParametres) {
         // String... parametre : nombre variable d'arguments
         // Se deplace dans un thread d'arriere-plan
+        JSONArray tableauJSON = null;
         StringBuilder lsb = new StringBuilder();
         String lsURL;
         String lsRessource;
@@ -66,45 +74,45 @@ public class TacheAsynchrone extends AsyncTask<String, Integer, String> {
             InputStream is = httpConnection.getInputStream();
             // Comme l'on recoit un flux Text ASCII
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
-            String lsLigne = "";
-            while ((lsLigne = br.readLine()) != null) {
-                lsb.append(lsLigne);
-                lsb.append("\n");
-            }
+            String lsContenu = br.readLine();
+
+            tableauJSON = new JSONArray(lsContenu);
+
             br.close();
             is.close();
         } catch (IOException e) {
             lsb.append(e.getMessage());
+        } catch (JSONException e) {
+            e.printStackTrace();
         } finally {
             // Deconnexion
             httpConnection.disconnect();
         }
         // Renvoie la valeur a onPostExecute
-        return lsb.toString();
+        return tableauJSON;
     } /// doInBackground
 
     @Override
     // -------------------------
-    protected void onPostExecute(String s) {
+    protected void onPostExecute(JSONArray s) {
         // Synchronisation avec le thread de l'UI
         // Affiche le resultat final
 //        textViewCSV.setText(s);
 
         List<String> itemsList = new ArrayList();
         List<String> itemsListTitres = new ArrayList();
-        String[] tLignes = s.split("\n");
-
-        for (int i = 0; i<tLignes.length;i++){
-            Log.i("LSLIGNEEEEE", tLignes[i]);
-            String[] tChamps = tLignes[i].split("#");
-            itemsListTitres.add(tChamps[0]);
-            Log.i("TIIITTRREE", tChamps[0]);
-            for (int k = 1; k < tChamps.length;k++) {
-                itemsList.add(tChamps[k]);
+        try {
+            JSONObject objet;
+            for (int i = 0; i < s.length();i++) {
+                objet = s.getJSONObject(i);
+                itemsListTitres.add(objet.getString("titre"));
+                itemsList.add(objet.getString("entree"));
             }
-        }
+            gridViewBoxOfficeTitle.setAdapter(new ArrayAdapter<String>(that, R.layout.cellule_texte, itemsListTitres));
+            gridViewBoxOffice.setAdapter(new ArrayAdapter<String>(that, R.layout.cellule_texte, itemsList));
 
-        gridViewHPPTitle.setAdapter(new ArrayAdapter<String>(that, R.layout.cellule_texte, itemsListTitres));
-        gridViewHPP.setAdapter(new ArrayAdapter<String>(that, R.layout.cellule_texte, itemsList));
+        }catch (Exception e) {
+
+        }
     } /// onPostExecute
 } /// TacheAsynchrone

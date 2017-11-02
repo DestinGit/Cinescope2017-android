@@ -1,39 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="HIT PARADE"/>
+        android:text="HIT PARADE" />
 
-    <TextView
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="500dp"-->
+    <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+    <!--android:text="HitParade du Public"-->
+    <!--android:id="@+id/textViewContenu" />-->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="HitParade du Public"
-        android:id="@+id/textViewContenu" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="horizontal" android:layout_width="match_parent"
-        android:layout_height="match_parent" android:padding="5dp">
+        <GridView
+            android:id="@+id/gridViewHPPTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="60"
+            android:numColumns="1"
+            ></GridView>
+
+        <GridView
+            android:id="@+id/gridViewHPP"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="40"
+            android:numColumns="3"></GridView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp">
 
         <Button
+            android:id="@+id/buttonAnnuler"
             android:layout_width="0dp"
-            android:layout_weight="50"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Annuler"
-            android:id="@+id/buttonAnnuler" />
+            android:layout_weight="50"
+            android:text="Annuler" />
 
         <Button
+            android:id="@+id/buttonValider"
             android:layout_width="0dp"
-            android:layout_weight="50"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Valider"
-            android:id="@+id/buttonValider" />
+            android:layout_weight="50"
+            android:text="Valider" />
 
     </LinearLayout>
 </LinearLayout>
