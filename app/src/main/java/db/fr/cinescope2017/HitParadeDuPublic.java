@@ -2,6 +2,7 @@ package db.fr.cinescope2017;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -9,13 +10,14 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 
+import asyncpackage.MyCallbackInterface;
 import asyncpackage.TacheAsynchrone;
 import utilities.classes.MenuItemChoix;
 
 public class HitParadeDuPublic extends AppCompatActivity implements View.OnClickListener{
     private Button buttonValider;
     private Button buttonAnnuler;
-//    private TextView textViewContenu;
+    private TextView textViewContenu;
     private GridView gridViewHPP, gridViewHPPTitle;
 
     @Override
@@ -26,7 +28,8 @@ public class HitParadeDuPublic extends AppCompatActivity implements View.OnClick
         buttonValider = (Button)findViewById(R.id.buttonValider);
         buttonAnnuler = (Button)findViewById(R.id.buttonAnnuler);
 
-//        textViewContenu = (TextView) findViewById(R.id.textViewContenu);
+        textViewContenu = (TextView) findViewById(R.id.textViewContenu);
+
         gridViewHPP = (GridView)findViewById(R.id.gridViewHPP);
         gridViewHPPTitle = (GridView)findViewById(R.id.gridViewHPPTitle);
 
@@ -37,12 +40,26 @@ public class HitParadeDuPublic extends AppCompatActivity implements View.OnClick
         String lsRessource = "HitParadeDuPublic";
 
 //        new TacheAsynchrone(textViewContenu).execute(lsURL, lsRessource);
-        new TacheAsynchrone(this, gridViewHPPTitle, gridViewHPP).execute(lsURL, lsRessource);
+        new TacheAsynchrone(this, gridViewHPPTitle, gridViewHPP, new MyCallback(textViewContenu)).execute(lsURL, lsRessource);
 
 //        TacheAsynchrone tae = new TacheAsynchrone();
 //        tae.setTextViewCSV(textViewContenu);
 //        tae.execute(lsURL, lsRessource);
 
+    }
+
+    private static class MyCallback implements MyCallbackInterface {
+        private TextView textViewContenu;
+
+        public MyCallback(TextView textViewContenu) {
+            this.textViewContenu = textViewContenu;
+        }
+
+        public void onTaskFinished(String result) {
+            // do something
+            Log.i("CECI EST : ", " UN TEST");
+            textViewContenu.setText("CECI EST UN TEST");
+        }
     }
 
     @Override

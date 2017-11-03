@@ -22,8 +22,13 @@ public class TacheAsynchrone extends AsyncTask<String, Integer, String> {
     private TextView textViewCSV;
     private Context that;
     private GridView gridViewHPP,gridViewHPPTitle;
+    private MyCallbackInterface callback;
 
     public TacheAsynchrone() {
+    }
+
+    public TacheAsynchrone(MyCallbackInterface callback) {
+        this.callback = callback;
     }
 
     public TacheAsynchrone(TextView textViewCSV) {
@@ -35,10 +40,11 @@ public class TacheAsynchrone extends AsyncTask<String, Integer, String> {
         this.gridViewHPP = gridViewHPP;
     }
 
-    public TacheAsynchrone(Context that, GridView gridViewHPPTitle, GridView gridViewHPP) {
+    public TacheAsynchrone(Context that, GridView gridViewHPPTitle, GridView gridViewHPP, MyCallbackInterface callback) {
         this.that = that;
         this.gridViewHPP = gridViewHPP;
         this.gridViewHPPTitle = gridViewHPPTitle;
+        this.callback = callback;
     }
 
     public void setTextViewCSV(TextView textViewCSV) {
@@ -49,6 +55,8 @@ public class TacheAsynchrone extends AsyncTask<String, Integer, String> {
     protected String doInBackground(String... asParametres) {
         // String... parametre : nombre variable d'arguments
         // Se deplace dans un thread d'arriere-plan
+        callback.onTaskFinished("TOTOI");
+
         StringBuilder lsb = new StringBuilder();
         String lsURL;
         String lsRessource;
@@ -106,5 +114,7 @@ public class TacheAsynchrone extends AsyncTask<String, Integer, String> {
 
         gridViewHPPTitle.setAdapter(new ArrayAdapter<String>(that, R.layout.cellule_texte, itemsListTitres));
         gridViewHPP.setAdapter(new ArrayAdapter<String>(that, R.layout.cellule_texte, itemsList));
+
+        callback.onTaskFinished(s);
     } /// onPostExecute
 } /// TacheAsynchrone
