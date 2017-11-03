@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Configuration"/>
+    <item
+        android:id="@+id/itemAide"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Aide"/>
+    <item
+        android:id="@+id/itemAPropos"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="A propos"/>
+
+</menu>

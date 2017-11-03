@@ -3,6 +3,8 @@ package db.fr.cinescope2017;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -144,4 +146,40 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
         } // / switch (requestCode)
 
     } // / onActivityResult
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    } // / onCreateOptionsMenu
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        super.onOptionsItemSelected(item);
+
+        // Détermine quelle entrée a été sélectionnée.
+        switch (item.getItemId()) {
+
+            // Aiguille
+            case (R.id.action_settings):
+                Toast.makeText(this, "Configuration", Toast.LENGTH_SHORT).show();
+                return true;
+
+            case (R.id.itemAide):
+                Toast.makeText(this, "Aide", Toast.LENGTH_SHORT).show();
+                return true;
+
+            case (R.id.itemAPropos):
+                Toast.makeText(this, "A propos\nLes barres d'action\nVersion 0.9", Toast.LENGTH_LONG).show();
+                return true;
+
+            default:
+                // Renvoie false si les entrées n’ont pas été gérées.
+                return false;
+        }
+
+    } // / onOptionsItemSelected
 }
