@@ -3,6 +3,56 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/itemAllMovies"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Tous les films"/>
+    <item
+        android:id="@+id/itemBoxOffice"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Box Office"/>
+    <item
+        android:id="@+id/itemHPP"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Hit Parade du public"/>
+
+    <item
+        android:id="@+id/itemCriticsReviews"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Avis des critiques"/>
+    <item
+        android:id="@+id/itemNewMovies"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Nouveaux films"/>
+    <item
+        android:id="@+id/itemOtherFilms"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Autres films"/>
+
+    <item
+        android:id="@+id/itemFilmsCovers"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Nouveaux films"/>
+
+    <item
+        android:id="@+id/itemAdvancedSearch"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Autres films"/>
+
+    <item
+        android:id="@+id/itemFestivals"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Autres films"/>
+
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         app:showAsAction="never"
