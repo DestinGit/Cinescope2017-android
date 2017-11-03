@@ -6,6 +6,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.widget.Toast;
 
+import db.fr.cinescope2017.Inscription;
+import db.fr.cinescope2017.Login;
+import db.fr.cinescope2017.LoginActivity;
 import db.fr.cinescope2017.R;
 
 /**
@@ -19,7 +22,13 @@ public class MenuItemChoix {
 
         // Détermine quelle entrée a été sélectionnée.
         switch (choix) {
-
+            case (R.id.itemConnect):
+//                intention.setClass(this, Inscription.class);
+                intention = new Intent(activite, Login.class);
+//                intention.putExtra("motRecherche","mon mot");
+                activite.startActivityForResult(intention, 8);
+//                startActivityForResult(intention, 8);
+                return true;
             // Aiguille
             case (R.id.action_settings):
                 Toast.makeText(activite, "Configuration", Toast.LENGTH_SHORT).show();

@@ -43,7 +43,7 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
 
         // Recupere l'id de l'image ... en base decimale
         // Transforme les images dans en string et le stocker dans le tableau String
-        String[] tImages = new String[8];
+        String[] tImages = new String[9];
         tImages[0] = String.valueOf(R.drawable.tousfilms);
         tImages[1] = String.valueOf(R.drawable.festival2);
         tImages[2] = String.valueOf(R.drawable.hitparade);
@@ -52,6 +52,7 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
         tImages[5] = String.valueOf(R.drawable.nouveauxfilms);
         tImages[6] = String.valueOf(R.drawable.reprises);
         tImages[7] = String.valueOf(R.drawable.rechercher);
+        tImages[8] = String.valueOf(R.drawable.festival2);
 
         // --- Creation de l'ArrayList pour remplir la ListView
         List<Map<String, String>> listMenu = new ArrayList();
@@ -104,6 +105,11 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
             intention.putExtra("motRecherche","mon mot");
             startActivityForResult(intention, 7);
         }
+        if (position==8){
+            intention.setClass(this, Inscription.class);
+            intention.putExtra("motRecherche","mon mot");
+            startActivityForResult(intention, 8);
+        }
     }
 
     // -------------------------
@@ -145,6 +151,7 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
                         Toast.makeText(this, lsDataRetour1, Toast.LENGTH_SHORT).show();
                         return;
                 }
+
         } // / switch (requestCode)
 
     } // / onActivityResult
