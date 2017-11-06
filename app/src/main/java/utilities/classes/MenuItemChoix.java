@@ -9,7 +9,10 @@ import android.widget.Toast;
 import db.fr.cinescope2017.Inscription;
 import db.fr.cinescope2017.Login;
 import db.fr.cinescope2017.LoginActivity;
+import db.fr.cinescope2017.MonCompte;
 import db.fr.cinescope2017.R;
+
+import static utilities.classes.Globale.*;
 
 /**
  * Created by formation on 03/11/2017.
@@ -30,6 +33,21 @@ public class MenuItemChoix {
 //                startActivityForResult(intention, 8);
                 return true;
             // Aiguille
+            case (R.id.itemMyAccount):
+                String lsNom = getNom();
+                if (lsNom.isEmpty()) {
+                    Toast.makeText(activite, Globale.getNom(), Toast.LENGTH_LONG).show();
+                } else {
+                    intention = new Intent(activite, MonCompte.class);
+
+                    intention.putExtra("id", Globale.getId());
+                    intention.putExtra("nom", Globale.getNom());
+                    intention.putExtra("mdp", Globale.getMdp());
+                    intention.putExtra("email", Globale.getEmail());
+
+                    activite.startActivityForResult(intention, 9);
+                }
+                return true;
             case (R.id.action_settings):
                 Toast.makeText(activite, "Configuration", Toast.LENGTH_SHORT).show();
                 return true;

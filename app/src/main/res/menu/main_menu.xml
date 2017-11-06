@@ -8,6 +8,11 @@
         app:showAsAction="never"
         android:title="Connexion"/>
     <item
+        android:id="@+id/itemMyAccount"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Mon compte"/>
+    <item
         android:id="@+id/itemAllMovies"
         android:orderInCategory="100"
         app:showAsAction="never"

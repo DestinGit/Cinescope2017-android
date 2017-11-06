@@ -23,11 +23,11 @@ import utilities.classes.Globale;
 /**
  * Created by formation on 31/10/2017.
  */
-public class TaskAsyncUserGet extends AsyncTask<String, Integer, String> {
+public class TaskAsyncUserGetDel extends AsyncTask<String, Integer, String> {
 
     private TextView textViewMessage;
 
-    public TaskAsyncUserGet(TextView textViewMessage) {
+    public TaskAsyncUserGetDel(TextView textViewMessage) {
         super();
         this.textViewMessage = textViewMessage;
     } /// Constructeur
@@ -67,8 +67,8 @@ public class TaskAsyncUserGet extends AsyncTask<String, Integer, String> {
             httpConnection.connect();
 
             String params = "";
-            params += "nom=" + URLEncoder.encode(asParametres[2], "UTF-8");
-            params += "&mdp=" + URLEncoder.encode(asParametres[3], "UTF-8");
+            params += "&id=" + URLEncoder.encode(asParametres[2], "UTF-8");
+//            params += "&mdp=" + URLEncoder.encode(asParametres[3], "UTF-8");
 
             // Execution de la requete parametree
             OutputStreamWriter osw = new OutputStreamWriter(httpConnection.getOutputStream());
@@ -120,21 +120,16 @@ public class TaskAsyncUserGet extends AsyncTask<String, Integer, String> {
             try {
                 JSONArray tJson = new JSONArray(asResultat);
                 if (tJson.length() > 0) {
-                    textViewMessage.setText("Vous etes connectés");
+                    textViewMessage.setText("Suppression OK");
 
-                    JSONObject objet = tJson.getJSONObject(0);
-                    Globale.setNom(objet.getString("nom"));
-                    Globale.setEmail(objet.getString("email"));
-                    Globale.setId(objet.getString("id"));
-                    Globale.setMdp(objet.getString("mdp"));
-
-                    Log.i("OBBBBJJ : ", "sdjfgsdjfgsjfsj");
-                    Log.i("OBBBBJJ : ", "GGGGGGGGGGGGGG");
-                    Log.i("OBBBBJJ : ", "GGGKKKKK");
-//                    Log.i("OBBBBJJ : ", objet.getString("nom"));
+//                    JSONObject objet = tJson.getJSONObject(0);
+//                    Globale.setNom(objet.getString("nom"));
+//                    Globale.setEmail(objet.getString("email"));
+//                    Globale.setId(objet.getString("id"));
+//                    Globale.setMdp(objet.getString("mdp"));
 
                 } else {
-                    textViewMessage.setText("Erreur d'authentification");
+                    textViewMessage.setText("Erreur Suppression");
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

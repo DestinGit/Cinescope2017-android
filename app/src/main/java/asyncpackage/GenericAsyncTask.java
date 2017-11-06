@@ -1,12 +1,14 @@
 package asyncpackage;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,23 +19,29 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-import utilities.classes.Globale;
+import db.fr.cinescope2017.R;
 
 /**
  * Created by formation on 31/10/2017.
  */
-public class TaskAsyncUserGet extends AsyncTask<String, Integer, String> {
+public class GenericAsyncTask extends AsyncTask<Map<String, String>, Integer, String> {
+    private CallbackInterface callback;
 
-    private TextView textViewMessage;
+    public GenericAsyncTask() {
+    }
 
-    public TaskAsyncUserGet(TextView textViewMessage) {
-        super();
-        this.textViewMessage = textViewMessage;
-    } /// Constructeur
+    public GenericAsyncTask(CallbackInterface callback) {
+        this.callback = callback;
+    }
 
-    // ----------------------------
-    protected String doInBackground(String... asParametres) {
+    @Override
+    protected String doInBackground(Map... asParametres) {
         // String... parametre : nombre variable d'arguments
         // Se deplace dans un thread d'arriere-plan
         StringBuilder lsbResultat = new StringBuilder();
@@ -43,16 +51,31 @@ public class TaskAsyncUserGet extends AsyncTask<String, Integer, String> {
         boolean lbErreur = false;
 
         String lsContent = "";
-        JSONArray tableauJSON = null;
+
+        Map<String, String> params2 = asParametres[0];
+        Set<String> keys = params2.keySet();
+        StringBuilder urlParameters = new StringBuilder();
+        for (String cle: keys) {
+            if (!cle.equals("lsUrl") && !cle.equals("lsRes")) {
+                urlParameters.append("&");
+                urlParameters.append(cle);
+                urlParameters.append("=");
+                urlParameters.append(params2.get(cle));
+            }
+        }
 
         try {
             // Probleme avec les espaces
             // Donc URL_encode ...
-            lsURL = asParametres[0];
-            lsRessources = asParametres[1];
+
+            lsURL = params2.get("lsUrl");
+            lsRessources = params2.get("lsRes");
+
+            Log.i("LLLLLL : ", lsURL);
+            Log.i("LLLLLL : ", lsRessources);
 
             // Instanciation de HttpURLConnection avec l'objet url
-            urlConnection = new URL(lsURL+lsRessources);
+            urlConnection = new URL(lsURL + lsRessources);
             httpConnection = (HttpURLConnection) urlConnection.openConnection();
 
             // Choix de la methode get ou post
@@ -66,10 +89,8 @@ public class TaskAsyncUserGet extends AsyncTask<String, Integer, String> {
             // Connexion
             httpConnection.connect();
 
-            String params = "";
-            params += "nom=" + URLEncoder.encode(asParametres[2], "UTF-8");
-            params += "&mdp=" + URLEncoder.encode(asParametres[3], "UTF-8");
-
+            String params = urlParameters.toString();
+            Log.i("LLLLLL : ", params);
             // Execution de la requete parametree
             OutputStreamWriter osw = new OutputStreamWriter(httpConnection.getOutputStream());
             osw.write(params);
@@ -84,7 +105,6 @@ public class TaskAsyncUserGet extends AsyncTask<String, Integer, String> {
             BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
 
             lsContent = br.readLine();
-//            tableauJSON = new JSONArray(lsContent);
 
             br.close();
             inputStream.close();
@@ -110,36 +130,16 @@ public class TaskAsyncUserGet extends AsyncTask<String, Integer, String> {
 
     @Override
     // -------------------------
-    protected void onPostExecute(String asResultat) {
+    protected void onPostExecute(String s) {
         // Synchronisation avec le thread de l'UI
         // Affiche le resultat final
-
-        if (asResultat.equalsIgnoreCase("Erreur réseau")) {
-            textViewMessage.setText(asResultat);
-        } else {
-            try {
-                JSONArray tJson = new JSONArray(asResultat);
-                if (tJson.length() > 0) {
-                    textViewMessage.setText("Vous etes connectés");
-
-                    JSONObject objet = tJson.getJSONObject(0);
-                    Globale.setNom(objet.getString("nom"));
-                    Globale.setEmail(objet.getString("email"));
-                    Globale.setId(objet.getString("id"));
-                    Globale.setMdp(objet.getString("mdp"));
-
-                    Log.i("OBBBBJJ : ", "sdjfgsdjfgsjfsj");
-                    Log.i("OBBBBJJ : ", "GGGGGGGGGGGGGG");
-                    Log.i("OBBBBJJ : ", "GGGKKKKK");
-//                    Log.i("OBBBBJJ : ", objet.getString("nom"));
-
-                } else {
-                    textViewMessage.setText("Erreur d'authentification");
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-        } /// if
+        JSONArray tableauJSON = null;
+        try {
+            tableauJSON = new JSONArray(s);
+            callback.onTaskFinished(tableauJSON);
+        } catch (JSONException e) {
+            callback.onTaskFinished(tableauJSON);
+            e.printStackTrace();
+        }
     } /// onPostExecute
 } /// TacheAsynchrone
