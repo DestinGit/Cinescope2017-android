@@ -7,4 +7,5 @@ import org.json.JSONArray;
  */
 public interface CallbackInterface {
     void onTaskFinished(JSONArray result);
+//    void onTaskInDoing(JSONArray result);
 }

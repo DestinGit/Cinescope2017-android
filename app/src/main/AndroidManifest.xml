@@ -36,7 +36,8 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".Login" />
-        <activity android:name=".MonCompte"></activity>
+        <activity android:name=".MonCompte" />
+        <activity android:name=".ImportBD"></activity>
     </application>
 
 </manifest>
