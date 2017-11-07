@@ -15,6 +15,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <provider
+            android:name="utilities.provider.ProviderSQLiteVille"
+            android:authorities="utilities.provider.ProviderSQLiteVille"
+            android:enabled="true"
+            android:exported="true">
+        </provider>
+
         <activity android:name=".Main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

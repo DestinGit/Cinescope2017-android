@@ -16,6 +16,13 @@
         android:layout_height="wrap_content"
         android:text="message"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ProgressBar
+        android:id="@+id/barreDeProgression"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
