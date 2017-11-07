@@ -71,9 +71,6 @@ public class GenericAsyncTask extends AsyncTask<Map<String, String>, Integer, St
             lsURL = params2.get("lsUrl");
             lsRessources = params2.get("lsRes");
 
-            Log.i("LLLLLL : ", lsURL);
-            Log.i("LLLLLL : ", lsRessources);
-
             // Instanciation de HttpURLConnection avec l'objet url
             urlConnection = new URL(lsURL + lsRessources);
             httpConnection = (HttpURLConnection) urlConnection.openConnection();
@@ -90,7 +87,7 @@ public class GenericAsyncTask extends AsyncTask<Map<String, String>, Integer, St
             httpConnection.connect();
 
             String params = urlParameters.toString();
-            Log.i("LLLLLL : ", params);
+
             // Execution de la requete parametree
             OutputStreamWriter osw = new OutputStreamWriter(httpConnection.getOutputStream());
             osw.write(params);

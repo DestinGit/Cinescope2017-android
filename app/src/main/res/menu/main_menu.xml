@@ -13,6 +13,11 @@
         app:showAsAction="never"
         android:title="Mon compte"/>
     <item
+        android:id="@+id/itemImportDB"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Importer"/>
+    <item
         android:id="@+id/itemAllMovies"
         android:orderInCategory="100"
         app:showAsAction="never"
