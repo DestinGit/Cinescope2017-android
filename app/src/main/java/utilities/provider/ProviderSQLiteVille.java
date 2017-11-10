@@ -42,7 +42,6 @@ public class ProviderSQLiteVille extends ContentProvider {
             curseur = null;
         }
         return curseur;
-//        return null;
     }
 
     @Nullable

@@ -3,6 +3,7 @@
     package="db.fr.cinescope2017">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -15,20 +16,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <provider
             android:name="utilities.provider.ProviderSQLiteVille"
             android:authorities="utilities.provider.ProviderSQLiteVille"
             android:enabled="true"
-            android:exported="true">
-        </provider>
+            android:exported="true"></provider>
 
         <activity android:name=".Main">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity android:name=".HitParadeDuPublic" />
         <activity android:name=".BoxOffice" />
@@ -45,7 +44,14 @@
             android:label="@string/title_activity_login" />
         <activity android:name=".Login" />
         <activity android:name=".MonCompte" />
-        <activity android:name=".ImportBD"></activity>
+        <activity android:name=".ImportBD" />
+        <activity android:name=".PermissionsCheck">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
