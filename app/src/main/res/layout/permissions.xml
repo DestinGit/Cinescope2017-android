@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+    <CheckBox
+        android:id="@+id/checkBoxCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Camera" />
+    <CheckBox
+        android:id="@+id/checkBoxRecordAudio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Record Audio" />
+    <CheckBox
+        android:id="@+id/checkBoxStorage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Write Storage" />
+    <Button
+        android:id='@+id/buttonValider'
+        android:layout_width='match_parent'
+        android:layout_height='wrap_content'
+        android:text='Valider' />
+</LinearLayout>
