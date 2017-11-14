@@ -80,7 +80,7 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
         myList.setAdapter(sa);
 
         myList.setOnItemClickListener(this);
-
+        onItemClick(myList, null, 0,0);
 //        onItemClick(myList, null, 2,2);
     }
 
@@ -90,6 +90,10 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
 //        Toast.makeText(this, map.get("itemMenu"), Toast.LENGTH_SHORT).show();
 
         Intent intention = new Intent();
+        if (position==0) {
+            intention.setClass(this, TousLesFilms.class);
+            startActivityForResult(intention, 0);
+        }
 
         if (position==1) {
             intention.setClass(this, BoxOffice.class);

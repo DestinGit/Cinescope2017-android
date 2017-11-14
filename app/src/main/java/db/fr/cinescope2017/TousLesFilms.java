@@ -1,5 +1,6 @@
 package db.fr.cinescope2017;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,7 +12,8 @@ import utilities.classes.MenuItemChoix;
 
 public class TousLesFilms extends AppCompatActivity implements View.OnClickListener{
     private Button buttonValider;
-    private Button buttonAnnuler;
+    private Button buttonVideo;
+    private Button buttonExit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,20 +21,33 @@ public class TousLesFilms extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.tous_les_films);
 
         buttonValider = (Button)findViewById(R.id.buttonValider);
-        buttonAnnuler = (Button)findViewById(R.id.buttonAnnuler);
+        buttonVideo = (Button)findViewById(R.id.buttonVideo);
+
+        buttonExit = (Button)findViewById(R.id.buttonExit);
 
         buttonValider.setOnClickListener(this);
-        buttonAnnuler.setOnClickListener(this);
+        buttonVideo.setOnClickListener(this);
+
+        buttonExit.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
-        if(v==buttonAnnuler) {
+        Intent intention;
+
+        if (v == buttonExit) {
             finish();
         }
+        if(v==buttonVideo) {
+            intention = new Intent(this, UnFilmUneVideo.class);
+            startActivity(intention);
+//            finish();
+        }
         if (v==buttonValider) {
-            finish();
+            intention = new Intent(this, UnFilm.class);
+            startActivity(intention);
+//            finish();
         }
     }
 
