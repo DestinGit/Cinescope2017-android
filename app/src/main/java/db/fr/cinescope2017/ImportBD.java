@@ -117,13 +117,21 @@ public class ImportBD extends AppCompatActivity implements View.OnClickListener 
          * @param json
          */
         @Override
-        public void onTaskFinished(JSONArray json) {
+        public void onTaskFinished(String json) {
             // Insertion des données
-            if (json.length() > 0) {
-                saveDataIntoDB(json);
-            } else {
+            try {
+                JSONArray tableauJSON = new JSONArray(json);
+                saveDataIntoDB(tableauJSON);
+            } catch (JSONException e) {
                 this.textViewMessage.setText("Finished Nothing");
+                e.printStackTrace();
             }
+
+//            if (json.length() > 0) {
+//                saveDataIntoDB(json);
+//            } else {
+//                this.textViewMessage.setText("Finished Nothing");
+//            }
             // Fermeture de la BD
             oms.close();
             bd = null;

@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.widget.Toast;
 
+import db.fr.cinescope2017.GeocodageCinemas;
 import db.fr.cinescope2017.ImportBD;
 import db.fr.cinescope2017.Inscription;
 import db.fr.cinescope2017.Login;
@@ -52,6 +53,10 @@ public class MenuItemChoix {
             case (R.id.itemImportDB):
                 intention = new Intent(activite, ImportBD.class);
                 activite.startActivityForResult(intention, 10);
+                return true;
+            case (R.id.itemGeoloc):
+                intention = new Intent(activite, GeocodageCinemas.class);
+                activite.startActivityForResult(intention, 11);
                 return true;
             case (R.id.action_settings):
                 Toast.makeText(activite, "Configuration", Toast.LENGTH_SHORT).show();

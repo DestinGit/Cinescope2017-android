@@ -130,13 +130,17 @@ public class GenericAsyncTask extends AsyncTask<Map<String, String>, Integer, St
     protected void onPostExecute(String s) {
         // Synchronisation avec le thread de l'UI
         // Affiche le resultat final
-        JSONArray tableauJSON = null;
-        try {
-            tableauJSON = new JSONArray(s);
-            callback.onTaskFinished(tableauJSON);
-        } catch (JSONException e) {
-            callback.onTaskFinished(tableauJSON);
-            e.printStackTrace();
-        }
+
+        callback.onTaskFinished(s);
+
+//        JSONArray tableauJSON = new JSONArray();;
+//        try {
+//            tableauJSON = new JSONArray(s);
+//            callback.onTaskFinished(tableauJSON);
+//        } catch (JSONException e) {
+//            callback.onTaskFinished(tableauJSON);
+//            e.printStackTrace();
+//        }
+//        Log.i("DDDDDD : ", tableauJSON.toString());
     } /// onPostExecute
 } /// TacheAsynchrone

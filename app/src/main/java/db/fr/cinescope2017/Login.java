@@ -69,8 +69,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         }
 
         @Override
-        public void onTaskFinished(JSONArray result) {
+        public void onTaskFinished(String res) {
             try {
+                JSONArray result = new JSONArray(res);
                 if (result.length() > 0) {
                     textViewMessage.setText("Vous etes connectés");
 
