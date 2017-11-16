@@ -20,8 +20,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import asyncpackage.CallbackInterface;
-import asyncpackage.GenericAsyncTask;
+import asynchronous.classes.CallbackInterface;
+import asynchronous.classes.GenericAsyncTask;
 
 public class GeocodageCinemas extends AppCompatActivity implements View.OnClickListener {
     private EditText editTextVoie, editTextVille, editTextPays;

@@ -1,14 +1,6 @@
-package asyncpackage;
+package asynchronous.classes;
 
-import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
-import android.widget.TextView;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,14 +10,8 @@ import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import db.fr.cinescope2017.R;
 
 /**
  * Created by formation on 31/10/2017.

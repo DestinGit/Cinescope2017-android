@@ -1,11 +1,7 @@
 package db.fr.cinescope2017;
 
-import android.app.LoaderManager;
-import android.content.Loader;
-import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -19,10 +15,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import asyncpackage.CallbackInterface;
-import asyncpackage.GenericAsyncTask;
-import asyncpackage.TacheAsynchroneInscription;
-import asyncpackage.TaskAsyncUserGet;
+import asynchronous.classes.CallbackInterface;
+import asynchronous.classes.GenericAsyncTask;
 import utilities.classes.Globale;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {

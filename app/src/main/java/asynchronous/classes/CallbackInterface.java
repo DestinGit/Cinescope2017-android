@@ -1,4 +1,4 @@
-package asyncpackage;
+package asynchronous.classes;
 
 import org.json.JSONArray;
 

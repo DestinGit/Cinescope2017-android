@@ -6,7 +6,38 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="HIT PARADE"/>
+        android:text="TOUS LES FILMS"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Recherche"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editTextRecherche"
+            android:layout_width="0dp"
+            android:layout_weight="60"
+            android:layout_height="wrap_content"
+            android:textColorLink="@color/colorPrimary">
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/buttonRechercher"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="20"
+            android:text="Rechercher" />
+
+    </LinearLayout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal" android:layout_width="match_parent"
@@ -16,7 +47,7 @@
             android:layout_width="0dp"
             android:layout_weight="50"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="0dp"
             android:text="Vidéo"
             android:id="@+id/buttonVideo" />
 
@@ -24,15 +55,22 @@
             android:layout_width="0dp"
             android:layout_weight="50"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="0dp"
             android:text="Photo"
             android:id="@+id/buttonValider" />
 
     </LinearLayout>
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Exit"
-        android:id="@+id/buttonExit" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/ListViewFilm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:choiceMode="singleChoice" />
+    </LinearLayout>
+
 </LinearLayout>

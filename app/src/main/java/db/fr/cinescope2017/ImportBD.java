@@ -16,8 +16,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import asyncpackage.CallbackInterface;
-import asyncpackage.GenericAsyncTask;
+import asynchronous.classes.CallbackInterface;
+import asynchronous.classes.GenericAsyncTask;
 import utilities.db.OpenManagerSQLite;
 
 public class ImportBD extends AppCompatActivity implements View.OnClickListener {
