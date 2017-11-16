@@ -17,7 +17,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import asynchronous.other.AllMoviesAsyncTask;
-import asyncpackage.TAFilmGetIdTitre;
 import utilities.classes.MenuItemChoix;
 
 public class TousLesFilms extends AppCompatActivity implements View.OnClickListener, View.OnFocusChangeListener , AdapterView.OnItemClickListener{
@@ -37,6 +36,7 @@ public class TousLesFilms extends AppCompatActivity implements View.OnClickListe
 
         initEvents();
 
+        getFilms();
     }
 
     private void initEvents() {
@@ -45,6 +45,8 @@ public class TousLesFilms extends AppCompatActivity implements View.OnClickListe
 
         buttonRechercher.setOnClickListener(this);
         editTextRecherche.setOnFocusChangeListener(this);
+
+//        ListViewFilm.setOnItemClickListener(this);
     }
 
     private void initInterface() {
@@ -75,13 +77,20 @@ public class TousLesFilms extends AppCompatActivity implements View.OnClickListe
         if (v == buttonRechercher) {
 //            new TAFilmGetIdTitre(this, ListViewFilm).execute("http://172.26.10.39:8084/Cinescope2017Web/", "FilmGetIdTitle", editTextRecherche.getText().toString());
 
-            Map<String, String> params = new HashMap();
-            params.put("lsUrl", "http://172.26.10.39:8084/Cinescope2017Web/");
-            params.put("lsRes", "FilmGetIdTitle");
-            params.put("chaine",  editTextRecherche.getText().toString());
-
-            new AllMoviesAsyncTask(this,ListViewFilm).execute(params);
+            getFilms();
         }
+    }
+
+    /**
+     * Recupère tous les films
+     */
+    private void getFilms() {
+        Map<String, String> params = new HashMap();
+        params.put("lsUrl", "http://172.26.10.39:8084/Cinescope2017Web/");
+        params.put("lsRes", "FilmGetIdTitle");
+        params.put("chaine",  editTextRecherche.getText().toString());
+
+        new AllMoviesAsyncTask(this,ListViewFilm).execute(params);
     }
 
     @Override
@@ -105,6 +114,8 @@ public class TousLesFilms extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Toast.makeText(this, ListViewFilm.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+
+//        parent.getChildAt(position).setBackgroundColor(Color.BLUE);
 
         ListViewFilm.setItemChecked(position, true);
         view.setBackgroundColor(Color.BLUE);
