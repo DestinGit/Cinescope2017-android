@@ -74,14 +74,26 @@
         <activity android:name=".UnFilm" />
         <activity android:name=".UnFilmUneVideo" />
         <activity android:name=".InclusionsDeBase">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity android:name=".CatalogueInclusion" />
+        <activity android:name=".AuthentificationInclusion" />
+        <activity android:name=".MainFragmentFixe">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CatalogueInclusion" />
-        <activity android:name=".AuthentificationInclusion"></activity>
+        <activity android:name=".Bandeau" />
+        <activity android:name=".CatalogueFragmentFixe" />
+        <activity android:name=".AuthentificationFragmentFixe"></activity>
     </application>
 
 </manifest>
