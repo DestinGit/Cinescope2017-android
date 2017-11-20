@@ -3,11 +3,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ABABAB"
+    android:orientation="vertical"
     android:padding="10dp" >
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="L&apos;art, simple, de la réutilisation ..." />
+        android:text="L&apos;art, simple, de la réutilisation ..."
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/buttonAuthentification"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Authentification"
+            android:onClick="afficherAuthentification" />
+
+        <Button
+            android:id="@+id/buttonCatalogue"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Catalogue"
+            android:onClick="afficherCatalogue" />
+    </LinearLayout>
 
 </LinearLayout>

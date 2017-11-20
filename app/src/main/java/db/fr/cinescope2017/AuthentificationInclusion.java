@@ -5,13 +5,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class InclusionsDeBase extends AppCompatActivity {
+public class AuthentificationInclusion extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.inclusions_de_base);
+        setContentView(R.layout.authentification_inclusion);
     }
+
+
+    public void retourAccueil(View vue) {
+        finish();
+    } /// retourAccueil
 
     public void afficherAuthentification(View vue) {
         Intent intention = new Intent(this, AuthentificationInclusion.class);
@@ -22,4 +27,5 @@ public class InclusionsDeBase extends AppCompatActivity {
         Intent intention = new Intent(this, CatalogueInclusion.class);
         startActivity(intention);
     } /// afficherCatalogue
+
 }
