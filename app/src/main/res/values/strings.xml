@@ -14,4 +14,6 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <string name="copyrightHexadecimal">&#x00A9;DG &#x0026; co </string>
 </resources>

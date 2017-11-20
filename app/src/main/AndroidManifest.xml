@@ -28,11 +28,11 @@
             android:exported="true" />
 
         <activity android:name=".Main">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity android:name=".HitParadeDuPublic" />
         <activity android:name=".BoxOffice" />
@@ -70,7 +70,14 @@
         </activity>
         <activity android:name=".GeocodageCinemas" />
         <activity android:name=".UnFilm" />
-        <activity android:name=".UnFilmUneVideo"></activity>
+        <activity android:name=".UnFilmUneVideo" />
+        <activity android:name=".InclusionsDeBase">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
